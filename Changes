@@ -1,0 +1,10 @@
+Revision history for Perl extension Apache::LogRegex
+
+1.2  Wed 14th September 2005
+	- Realised I needed a change log file
+
+1.3	 Mon 8th May 2006
+	- Extend the \" handling for User-Agent
+
+1.4  Sat 21st October 2006
+    - On Apache 2.2 the %U format can contain spaces

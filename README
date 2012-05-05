@@ -1,0 +1,75 @@
+Apache::LogRegex - Parse a line from an Apache logfile into a hash
+
+This document refers to version 1.5 of Apache::LogRegex, released November 20th 2008
+
+Designed as a simple class to parse Apache log files. It will construct
+a regex that will parse the given log file format and can then parse
+lines from the log file line by line returning a hash of each line.
+
+The field names of the hash are derived from the log file format. Thus
+if the format is '%a %t \"%r\" %s %b %T \"%{Referer}i\" ...' then the
+keys of the hash will be %a, %t, %r, %s, %b, %T and %{Referer}i.
+
+Should these key names be unusable, as I guess they probably are, then
+subclass and provide an override rename_this_name() method that can
+rename the keys before they are added in the array of field names.
+
+INSTALLATION
+
+ % perl Makefile.PL
+ % make
+ % make test
+ % sudo make install
+
+TEST FAILURES
+
+The tests are there to make sure that I have broken nothing when I
+fiddle with the code and will teach you very little about how to use
+the code. 
+
+TO DO
+
+Pretty much finished, unless there are some 'must have' features
+
+BUGS
+
+None so far
+
+REQUIREMENTS
+
+* Developed under 5.6.1 but should work on anything 5+.
+* Written completely in Perl. XS is not required.
+
+AUTHOR
+
+Peter Hickman <peterhi@ntlworld.com>
+
+Copyright (c) 2004-2006, Peter Hickman. All rights reserved.
+
+This module is free software. It may be used, redistributed and/or 
+modified under the same terms as Perl itself.
+
+CHANGES IN THIS RELEASE
+
+V1.0:
+      - First release to CPAN
+
+V1.1
+	  - Bug fix, can now handle \" as part of the %r element.
+        Thanks to James March and mauke (from #perlhelp) for
+        locating the bug and supplying the fix.
+
+V1.2
+	  - Bug fix. Because we allow \" in the %r element then we
+		really should be allowing it in any of the Referer
+		elements. Thanks to Damir Tresnjo for pointing this out.
+
+V1.3
+	  - Bug fix. Should allow for \" in the User-Agent. Thanks
+		to Graeme J Sweeney for spotting this.
+
+V1.4
+      - Bug fix. Changed the regex so that it could parse DOS
+        line endings when running on a Unix based system. Thanks
+        to Christian Glahn for reporting this one and supplying
+        the patch to fix it.

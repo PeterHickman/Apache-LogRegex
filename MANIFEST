@@ -1,0 +1,6 @@
+lib/Apache/LogRegex.pm
+Makefile.PL
+MANIFEST
+README
+t/simple.t
+META.yml                                 Module meta-data (added by MakeMaker)
